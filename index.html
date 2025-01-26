@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knox Eval</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            width: 4ch;
+            text-align: center;
+        }
+
+        td {
+            width: 4ch;
+        }
+
+        input {
+            width: 4ch;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="knoxForm">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>TPR</th>
+                    <th>PPR</th>
+                    <th>Max Stage</th>
+                    <th>Hp</th>
+                    <th>Attack</th>
+                    <th>Regen</th>
+                    <th>DR</th>
+                    <th>Block</th>
+                    <th>Effect</th>
+                    <th>Charge%</th>
+                    <th>Charge Gain</th>
+                    <th>Reload</th>
+                    <th>Salvo</th>
+                    <th>Revive</th>
+                    <th>CA</th>
+                    <th>UA</th>
+                    <th>GB</th>
+                    <th>Omen</th>
+                    <th>LL</th>
+                    <th>POG</th>
+                    <th>FM</th>
+                    <th>(1) RTK</th>
+                    <th>(1) SA</th>
+                    <th>(2) DMTNT</th>
+                    <th>(2) SPA</th>
+                    <th>(3) PL</th>
+                    <th>(3) Timeless</th>
+                    <th>(2) SE</th>
+                    <th>(4) PCT</th>
+                    <th>(5) KoT</th>
+                    <th>(2) Elixer</th>
+                    <th>(3) Shield</th>
+                    <th>Gadget</th>
+                    <th>iterations</th>
+                    <th>Runs/Respec</th>
+                    <th>Exchanged Glac</th>
+                    <th>Exchanged quartz</th>
+                    <th>Exchanged Tess</th>
+                    <th>Boss Loot Rate</th>
+                    <th>IAP</th>
+                    <th>Special</th>
+                    <th>Ultima</th>
+                    <th>Revive reduction</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" name="level_1"></td>
+                    <td><input type="text" name="tpr_1"></td>
+                    <td><input type="text" name="ppr_1"></td>
+                    <td><input type="text" name="max_stage_1"></td>
+                    <td><input type="text" name="hp_1"></td>
+                    <td><input type="text" name="attack_1"></td>
+                    <td><input type="text" name="regen_1"></td>
+                    <td><input type="text" name="dr_1"></td>
+                    <td><input type="text" name="block_1"></td>
+                    <td><input type="text" name="effect_1"></td>
+                    <td><input type="text" name="charge_percent_1"></td>
+                    <td><input type="text" name="charge_gain_1"></td>
+                    <td><input type="text" name="reload_1"></td>
+                    <td><input type="text" name="salvo_1"></td>
+                    <td><input type="text" name="revive_1"></td>
+                    <td><input type="text" name="ca_1"></td>
+                    <td><input type="text" name="ua_1"></td>
+                    <td><input type="text" name="gb_1"></td>
+                    <td><input type="text" name="omen_1"></td>
+                    <td><input type="text" name="ll_1"></td>
+                    <td><input type="text" name="pog_1"></td>
+                    <td><input type="text" name="fm_1"></td>
+                    <td><input type="text" name="rtk_1"></td>
+                    <td><input type="text" name="sa_1"></td>
+                    <td><input type="text" name="dmtnt_1"></td>
+                    <td><input type="text" name="spa_1"></td>
+                    <td><input type="text" name="pl_1"></td>
+                    <td><input type="text" name="timeless_1"></td>
+                    <td><input type="text" name="se_1"></td>
+                    <td><input type="text" name="pct_1"></td>
+                    <td><input type="text" name="kot_1"></td>
+                    <td><input type="text" name="elixer_1"></td>
+                    <td><input type="text" name="shield_1"></td>
+                    <td><input type="text" name="gadget_1"></td>
+                    <td><input type="text" name="iterations_1"></td>
+                    <td><input type="text" name="runs_respec_1"></td>
+                    <td><input type="text" name="exchanged_glac_1"></td>
+                    <td><input type="text" name="exchanged_quartz_1"></td>
+                    <td><input type="text" name="exchanged_tess_1"></td>
+                    <td><input type="text" name="boss_loot_rate_1"></td>
+                    <td><input type="text" name="iap_1"></td>
+                    <td><input type="text" name="special_1"></td>
+                    <td><input type="text" name="ultima_1"></td>
+                    <td><input type="text" name="revive_reduction_1"></td>
+                </tr>
+                <!-- Repeat the above <tr> block 9 more times, changing the name attributes to level_2, tpr_2, ppr_2, max_stage_2, hp_2, etc. -->
+            </tbody>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="assets/js/evalknox.js"></script>
+    <script>
+        document.getElementById('knoxForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const form = event.target;
+            const rows = form.querySelectorAll('tbody tr');
+            rows.forEach((row, index) => {
+                const inputs = row.querySelectorAll('input');
+                const values = Array.from(inputs).map(input => input.value);
+                const [
+                    level, tpr, ppr, maxStage, hp, attack, regen, dr, block, effect, chargePercent, chargeGain, reload, salvo, revive, ca, ua, gb, omen, ll, pog, fm, rtk, sa, dmtnt, se, pl, timeless, kot, pct, spa, elixir, shield, gadget, iterations, runsRespec, exchangedGlac, exchangedQuartz, exchangedTess, bossLootRate, iap, special, ultima, reviveReduction
+                ] = values;
+                const result = EVALKNOX(level, maxStage, hp, attack, regen, dr, block, effect, chargePercent, chargeGain, reload, salvo, revive, ca, ua, gb, omen, ll, pog, fm, rtk, sa, dmtnt, se, pl, timeless, kot, pct, spa, elixir, shield, gadget, iterations, iap, special, ultima, exchangedGlac, exchangedQuartz, exchangedTess, reviveReduction, runsRespec, bossLootRate);
+
+                const [
+                    lpm, stageAvg, minutesAvg, stageMin, stageMax, bossHpAvg, bossKillRate, glacRun, quartzRun, tessRun, xpRun, extraGlac, extraQuartz, extraTess, extraXp, projectedLvl
+                ] = result.map(value => parseFloat(value).toFixed(3));
+
+                let resultRow = row.nextElementSibling;
+                if (!resultRow || !resultRow.classList.contains('result-row')) {
+                    resultRow = document.createElement('tr');
+                    resultRow.classList.add('result-row');
+                    const resultCells = [
+                        lpm, stageAvg, minutesAvg, stageMin, stageMax, bossHpAvg, bossKillRate, glacRun, quartzRun, tessRun, xpRun, extraGlac, extraQuartz, extraTess, extraXp, projectedLvl
+                    ].map(value => {
+                        const cell = document.createElement('td');
+                        cell.textContent = value;
+                        return cell;
+                    });
+                    resultCells.forEach(cell => resultRow.appendChild(cell));
+                    row.parentNode.insertBefore(resultRow, row.nextSibling);
+                } else {
+                    const resultCells = resultRow.querySelectorAll('td');
+                    [
+                        lpm, stageAvg, minutesAvg, stageMin, stageMax, bossHpAvg, bossKillRate, glacRun, quartzRun, tessRun, xpRun, extraGlac, extraQuartz, extraTess, extraXp, projectedLvl
+                    ].forEach((value, index) => {
+                        resultCells[index].textContent = value;
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
